@@ -8,7 +8,7 @@ Configuration needed
 2. MYSQL  (sql server 5.1)
 
 
-once you download the project and install node and Mysql
+ download the project and install node and Mysql
 
 step 1 :once you download the project type npm install 
 
@@ -22,6 +22,8 @@ go to folder
 type "node app"
 
 "once the server is ready uou can use the api."
+
+######################################################
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -48,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 
 
-//DATETIME NOT NULL
+
 CREATE TABLE IF NOT EXISTS `booking` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `user_id` int(10) NOT NULL,
@@ -66,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 
-///////////////////////////////////////////////////////
+###################################################
 
 
 
@@ -80,8 +82,7 @@ CREATE TABLE IF NOT EXISTS `booking` (
 
 
 
-
-api list
+#####################  api list  ####################
 
 create user
 
