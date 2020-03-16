@@ -4,7 +4,6 @@ Hotel Api
 
 
 
-
 database hotel_db
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -156,6 +155,31 @@ http://localhost:8080/booking/fetchBookingByUser
 "user_id":6
 
 }
+
+
+
+
+fetch Booking for report
+
+http://localhost:8080/booking/fetchBookingByFilter
+
+for all booking  
+{}
+
+for booking made by admin/backend
+
+{
+"searchType" : "byAllAdmin"
+}
+
+for booking made by particular admin
+
+{
+"searchType" : "byAdmin",
+"byWhichAdmin" : 0
+}
+
+
 
 
 
