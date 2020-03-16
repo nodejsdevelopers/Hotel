@@ -1,6 +1,12 @@
 # Hotel
 Hotel Api
+########################################################
 
+OTA 
+
+https://connect.booking.com/user_guide/site/en-US/content/
+
+########################################################
 
 Configuration needed
 
