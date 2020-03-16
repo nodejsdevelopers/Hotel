@@ -30,7 +30,7 @@ router.post('/makeBooking', function (req, res) {
 router.post('/fetchBookingByUser', function (req, res) {
 	var user_id = req.body.user_id;
 	
-	var sql = "select * from booking where user_id = "+user_id;
+	var sql = "select * from booking where user_id = "+user_id+" order by booking_from desc  limit 1000";
 	
 	global.db.query(sql, function (err, result) {
 		if (err) throw err;
@@ -41,7 +41,7 @@ router.post('/fetchBookingByUser', function (req, res) {
 });
 
 router.post('/fetchBookingAll', function (req, res) {
-	var sql = "select * from booking";
+	var sql = "select * from booking order by id desc  limit 1000";
 	
 	global.db.query(sql, function (err, result) {
 		if (err) throw err;
@@ -52,7 +52,55 @@ router.post('/fetchBookingAll', function (req, res) {
 });
 
 router.post('/fetchBookingByFilter', function (req, res) {
-	var user_id = req.body.user_id;
+	var fromDate = req.body.fromDate;
+	var toDate = req.body.toDate;
+	var byAdmin = req.body.byAdmin;
+	var byUser = req.body.byUser;
+	var byWhichAdmin = req.body.byWhichAdmin;
+	var searchType = req.body.searchType;
+	
+	var sql = "select * from booking ";
+	if(searchType == 'byAllAdmin')
+	{
+		sql+=" WHERE booking_by = 'ADMIN' ";
+		if(fromDate != "" && typeof fromDate != 'undefined')
+		{
+			sql+=" AND booking_from = '"+fromDate+"' ";
+		}
+		if(toDate != "" && typeof toDate != 'undefined')
+		{
+			sql+=" AND booking_to = '"+toDate+"' ";
+		}
+	}
+	if(searchType == 'byAdmin')
+	{
+		sql+=" WHERE booking_by = 'ADMIN' AND booking_by_admin_id ="+byWhichAdmin;
+		
+		if(fromDate != "" && typeof fromDate != 'undefined')
+		{
+			sql+=" AND booking_from = '"+fromDate+"' ";
+		}
+		if(toDate != "" && typeof toDate != 'undefined')
+		{
+			sql+=" AND booking_to = '"+toDate+"' ";
+		}
+	}
+	if(searchType == 'onData')
+	{
+		sql+=" WHERE booking_from = '"+fromDate+"' ";
+	}
+	if(searchType == 'fromToDate')
+	{
+		sql+=" WHERE booking_from = '"+fromDate+"' AND booking_to = '"+toDate+"'";
+	}
+	sql+= "  order by id desc  limit 1000";
+	
+	console.log(sql);
+	global.db.query(sql, function (err, result) {
+		if (err) throw err;
+		console.log(result);
+		res.send({error : 0,"message" : "credential match","data" : result});
+	});
 	
 });
 module.exports = router;
