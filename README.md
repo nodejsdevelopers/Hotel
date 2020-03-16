@@ -2,9 +2,26 @@
 Hotel Api
 
 
+Configuration needed
+
+1. Nodejs
+2. MYSQL  (sql server 5.1)
 
 
-database hotel_db
+once you download the project and install node and Mysql
+
+step 1 :once you download the project type npm install 
+
+ step 2: set MYSQL root password as : Password@123
+create one database hotel_db
+and create tables by using below script
+
+step 3: to run application 
+open commandline
+go to folder
+type "node app"
+
+"once the server is ready uou can use the api."
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
