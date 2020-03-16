@@ -130,7 +130,7 @@ http://localhost:8080/booking/makeBooking
 
 {
 "user_id":4,
-"booking_by" : "self",
+"booking_by" : "self", // if by admin user ADMIN
 "booking_by_admin_id" : "",
 "booking_from" : "2020-03-20",
 "booking_to" : "2020-03-22",
